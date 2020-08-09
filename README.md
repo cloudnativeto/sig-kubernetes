@@ -1,10 +1,10 @@
-## Kubernetes 源码研习社
+# Kubernetes 源码研习社
 
-Kubernetes 源码研习社是由[云原生社区](https://cloudnative.to)组织的 Kubernetes 源码 SIG，由热爱学习、注重个人成长的一帮小伙伴们自由、自愿成立的小组。每个人都非常希望从 Kubernetes 上学到知识，帮助自己实现成长和进步。欢迎加入，一起坚持，一起克服，一起成长。
+Kubernetes 源码研习社是由[云原生社区](https://cloudnative.to)组织的 Kubernetes 源码特别兴趣小组（SIG），由热爱学习、注重个人成长的一帮小伙伴们自由、自愿成立的小组。每个人都非常希望从 Kubernetes 上学到知识，帮助自己实现成长和进步。欢迎加入，一起坚持，一起克服，一起成长。
 
 ## 加入我们
 
-扫描二维码，添加 Jimmy Song 好友，备注姓名-公司，留言“加入源码研习社”即可。
+扫描下面的二维码，添加 Jimmy Song 好友，备注姓名-公司，留言“加入源码研习社”即可。
 
 ![](doc/images/wechat.jpg)
 
