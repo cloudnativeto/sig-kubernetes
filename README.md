@@ -6,7 +6,7 @@ Kubernetes 源码研习社是由[云原生社区](https://cloudnative.to)组织�
 
 扫描二维码，添加 Jimmy Song 好友，备注姓名-公司，留言“加入源码研习社”即可。
 
-![](doc/images/wechat.webp)
+<img src="doc/images/wechat.webp" style="zoom:50%;" />
 
 ## 嘉宾介绍
 
