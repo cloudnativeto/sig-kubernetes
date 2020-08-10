@@ -22,6 +22,18 @@ IT 技术日新月异，想必每个 IT 人都会有类似的焦虑：我该学�
 
 [Kubernetes 源码研习社第一期活动介绍](https://github.com/cloudnativeto/sig-k8s-source-code/issues/8)
 
+## Kubernetes 源码研习社组成
+
+社长：厉辉（[@Miss-you](https://github.com/Miss-you)）
+
+Kubernetes 源码研习社会在每期学员中推选出学习委员，作为本仓库的 maintainer，负责活动的运作和项目管理。
+
+| 期数   | 姓名   | GitHub                                      |
+| ------ | ------ | ------------------------------------------- |
+| 第一期 | 赵卫国 | [zhaoweiguo](https://github.com/zhaoweiguo) |
+| 第一期 | 金润森 | [gasxia](https://github.com/gasxia)         |
+| 第一期 | 王文虎 | [wenhuwang](https://github.com/wenhuwang)   |
+
 ## 你能收获什么？
 
 - 对 Kubernetes 核心源码有更深刻的理解
