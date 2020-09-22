@@ -75,7 +75,7 @@ IT 技术日新月异，想必每个 IT 人都会有类似的焦虑：我该学�
 
 #### Kubernetes 源码研习社一期总结
 
-[Kubernetes 源码研习社一期总结](https://github.com/cloudnativeto/sig-k8s-source-code/blob/master/atcion/kubernetes%E6%BA%90%E7%A0%81%E7%A0%94%E4%B9%A0%E7%A4%BE%E4%B8%80%E6%9C%9F/%E4%B8%80%E6%9C%9F%E6%80%BB%E7%BB%93.md)
+本次活动共有96位同学参与，381人参与交流，产生读书笔记115篇，优秀笔记39篇，公众号文章3篇。更多详情参见：[Kubernetes 源码研习社一期总结](https://github.com/cloudnativeto/sig-k8s-source-code/blob/master/atcion/kubernetes%E6%BA%90%E7%A0%81%E7%A0%94%E4%B9%A0%E7%A4%BE%E4%B8%80%E6%9C%9F/%E4%B8%80%E6%9C%9F%E6%80%BB%E7%BB%93.md)
 
 
 #### 其他关键活动
