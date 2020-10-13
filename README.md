@@ -16,6 +16,8 @@ Kubernetes 源码剖析，干就完事了。
 
 坚持就是胜利
 
+## 阅读源码的建议
+
 [如何高效阅读 Kubernetes 源码？](action/guide/kubernetes源码阅读指引.md)
 
 ## 你能收获什么？
