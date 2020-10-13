@@ -16,6 +16,8 @@ Kubernetes 源码剖析，干就完事了。
 
 坚持就是胜利
 
+## 阅读源码的建议
+
 [如何高效阅读 Kubernetes 源码？](action/guide/kubernetes源码阅读指引.md)
 
 ## 你能收获什么？
@@ -32,6 +34,17 @@ Kubernetes 源码剖析，干就完事了。
 ## 嘉宾介绍
 
 郑东旭（Derek Zheng） BFE（万亿流量转发引擎）开源项目的作者之一，《Kubernetes 源码剖析》作者，擅长 Linux 下高性能服务器的开发，对云计算、区块链相关技术领域有深刻的理解。
+
+## 源码研习社 SIG 小组成员
+
+SIG 的全称是 Special Interests Group, 或称 Super Intellectual Genius。
+源码研习社 SIG 小组负责源码研习社活动的日常维护，目前的核心成员包括：
+
+- [厉辉 yousali](https://github.com/Miss-you)
+- 金润森
+- 王文虎
+- 赵卫国
+- 王冬
 
 ## Q&A:
 
