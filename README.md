@@ -53,7 +53,7 @@ Kubernetes 源码 scheduler 剖析，干就完事了。每周学习目标：
 
 #### 阅读源码的建议
 
-[如何高效阅读 Kubernetes 源码？](action/guide/kubernetes 源码阅读指引。md)
+[如何高效阅读 Kubernetes 源码？](action/guide/kubernetes-源码阅读指引.md)
 
 #### 欢迎贡献
 
