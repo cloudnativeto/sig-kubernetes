@@ -25,7 +25,7 @@ Kubernetes 源码 scheduler 剖析，干就完事了。每周学习目标：
 
 坚持就是胜利
 
-### 推荐文章
+### 推荐资料
 
 #### scheduler 原理解析
 
@@ -41,7 +41,10 @@ Kubernetes 源码 scheduler 剖析，干就完事了。每周学习目标：
 
 [调度器核心数据结构与算法分析 -- 云原生学习笔记 -- 作者 baxiaoshi](https://www.yuque.com/baxiaoshi/tyado3/yw9deb)
 
-[Kubernetes 源码分析之 kube-scheduler](https://juejin.im/post/6844903796120780814#heading-9)
+[Kubernetes 源码分析之 kube-scheduler](https://juejin.im/post/6844903796120780814#heading-9)  
+
+非常感谢社区[abserari](https://github.com/abserari)整理的以下的学习资料  
+[源码研习社特供版图解scheduler](doc/pdf/Scheduler.pdf)  
 
 #### scheduler 扩展开发
 
@@ -56,6 +59,7 @@ Kubernetes 源码 scheduler 剖析，干就完事了。每周学习目标：
 [scheduler 包括其他的一些组件相关解析](https://www.bookstack.cn/read/source-code-reading-notes/kubernetes-kube_scheduler_preempt.md)
 
 [调度系统设计精要](https://draveness.me/system-design-scheduler/)
+
 
 #### 阅读源码的建议
 
@@ -98,7 +102,7 @@ SIG 的全称是 Special Interests Group, 或称 Super Intellectual Genius。
 - 王文虎
 - 赵卫国
 - 王冬
-- lan
+- [梁远鹏](https://github.com/liangyuanpeng)
 
 ## Q&A:
 
