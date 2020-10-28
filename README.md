@@ -10,6 +10,8 @@ Kubernetes 源码研习社是由 [云原生社区](https://cloudnative.to) 组�
 
 如何报名：[报名方式](###如何报名)
 
+分享招募: [scheduler源码分享讲师招募](https://github.com/cloudnativeto/sig-k8s-source-code/blob/master/action/Kubernetes%E6%BA%90%E7%A0%81%E7%A0%94%E4%B9%A0%E7%A4%BE%E4%BA%8C%E6%9C%9F/schedluer%E6%BA%90%E7%A0%81%E5%88%86%E4%BA%AB%E8%AE%B2%E5%B8%88%E6%8B%9B%E5%8B%9F.md) 
+
 ### 活动介绍
 
 Kubernetes 源码 scheduler 剖析，干就完事了。每周学习目标：
