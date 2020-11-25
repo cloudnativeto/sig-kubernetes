@@ -6,4 +6,4 @@
 
 ## 活动
 
-- [Kubernetes 源码研习社](./docs/code/)
+- [Kubernetes 源码研习社](./docs/event/code-club.md)

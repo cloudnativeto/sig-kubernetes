@@ -2,7 +2,7 @@
 
 * [欢迎](README.md)
 
-## Kubernetes 源码研习社 <a id="code-club"></a>
+## 活动<a id="event"></a>
 
-* [Kubernetes 源码研习社介绍](code-club/README.md)
+* [Kubernetes 源码研习社](event/code-club.md)
 
