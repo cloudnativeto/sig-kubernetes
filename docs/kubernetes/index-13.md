@@ -117,7 +117,7 @@ cacheWatcher 核心处理流程如下所示
 
 #### Cacher
 
-![cacher-cacher-watch.svg](../.gitbook/assets/41.png)
+![](../.gitbook/assets/image%20%285%29.png)
 
 triggerValue、triggerSupported 判定过程如下
 

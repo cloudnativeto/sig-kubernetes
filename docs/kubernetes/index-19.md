@@ -5,7 +5,7 @@ keywords:
   - Kubernetes
   - Client
 author: '[杨鼎睿](https://yuque.com/abser)'
-date: 2021-04-26T18:04:05.000Z
+date: '2021-04-26T18:04:05.000Z'
 title: Kubernetes Client Shared Informer 架构设计源码阅读
 tags:
   - Kubernetes
