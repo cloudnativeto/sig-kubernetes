@@ -5,7 +5,7 @@ keywords:
   - Kubernetes
   - Controller
 author: '[杨鼎睿](https://yuque.com/abser)'
-date: '2021-05-10T05:04:05.000Z'
+date: 2021-05-10T05:04:05.000Z
 title: Kubernetes Controller Node Controllers 架构设计源码阅读
 tags:
   - Kubernetes
