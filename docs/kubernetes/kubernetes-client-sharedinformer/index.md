@@ -20,7 +20,7 @@ profile: "华北电力大学大四学生。"
 ![shared-informer-workflow.svg](1.png)
 
 ## Procedure
-![shared-informer-procedures.svg](procedure.svg)
+![shared-informer-procedures.svg](2.svg)
 
 ### Run
 ![image.png](3.png)
