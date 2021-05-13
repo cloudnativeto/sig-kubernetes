@@ -1,6 +1,6 @@
 <a name="367rQ"></a>
 ## Design
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/124360/1594440695521-26b33cad-7f83-4959-8d26-e2ba6eabc224.png#align=left&display=inline&height=248&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=632&size=88771&status=done&style=none&width=632)
+![image.png](1.jpeg)
 
 - Sandbox: 协议栈，可包含多个 Endpoint，可通过 Namespace、Jail 等实现
 - Endpoint: 将 Sandbox 与 Network 连接
@@ -9,11 +9,11 @@
 <br />
 <a name="BjSvc"></a>
 ## Docker Architecture
-![docker-network-arch.svg](https://cdn.nlark.com/yuque/0/2020/svg/124360/1594527771358-28a19b8b-86c7-428e-afd3-2e3a4309684c.svg#align=left&display=inline&height=291&margin=%5Bobject%20Object%5D&name=docker-network-arch.svg&originHeight=291&originWidth=641&size=15827&status=done&style=none&width=641)<br />
+![docker-network-arch.svg](2.jpeg)<br />
 
 <a name="8h6iv"></a>
 ## Network Controller
-![docker-network-network-controller.svg](https://cdn.nlark.com/yuque/0/2020/svg/124360/1594539108440-6350d872-7c05-450a-b061-dcc331ef8953.svg#align=left&display=inline&height=191&margin=%5Bobject%20Object%5D&name=docker-network-network-controller.svg&originHeight=191&originWidth=559&size=13807&status=done&style=none&width=559)
+![docker-network-network-controller.svg](3.jpeg)
 <a name="xN68x"></a>
 ### Initialize Network Controllers
 Docker Daemon 管理可用的 NetworkController。在启动 Daemon 时，会创建当前操作系统下全部可用的 NetworkController，以 daemon_unix.go 为例，创建了 none、host、bridge 三种模式的网络控制器。
@@ -86,13 +86,13 @@ func (daemon *Daemon) initNetworkController(config *config.Config, activeSandbox
 <br />
 <a name="RXFk7"></a>
 ### NetworkController Implementation
-![docker-network-network-controller-impl.svg](https://cdn.nlark.com/yuque/0/2020/svg/124360/1594545930292-4b6a3ddc-1c76-4cad-a844-a1b1f0b6e5fc.svg#align=left&display=inline&height=747&margin=%5Bobject%20Object%5D&name=docker-network-network-controller-impl.svg&originHeight=747&originWidth=832&size=38506&status=done&style=none&width=832)<br />controller 是 libnetwork 中对 NetworkController 的实现。可以看到，controller 通过驱动表来区分不同类型的网络，使用驱动创建 Network 及 Endpoint，并将 Endpoint 加入 Sandbox 或移除出 Sandbox。<br />Container 通过 SandboxID 以及 SandboxKey 来找到对应的 Sandbox。Sandbox 可以使用 containerID 来确定是否归属于某个 Container。
+![docker-network-network-controller-impl.svg](4.jpeg)<br />controller 是 libnetwork 中对 NetworkController 的实现。可以看到，controller 通过驱动表来区分不同类型的网络，使用驱动创建 Network 及 Endpoint，并将 Endpoint 加入 Sandbox 或移除出 Sandbox。<br />Container 通过 SandboxID 以及 SandboxKey 来找到对应的 Sandbox。Sandbox 可以使用 containerID 来确定是否归属于某个 Container。
 
 <a name="ObdUm"></a>
 ## OS Layer Sandbox
 <a name="i3DCJ"></a>
 ### Namespace
-![docker-network-sandbox.svg](https://cdn.nlark.com/yuque/0/2020/svg/124360/1594442691959-94b701b7-8b08-498d-970d-8c2631742b47.svg#align=left&display=inline&height=423&margin=%5Bobject%20Object%5D&name=docker-network-sandbox.svg&originHeight=423&originWidth=601&size=14836&status=done&style=none&width=601)<br />Sandbox 接口没有列举出全部功能，只是能看出其能力边界的部分功能。后续以 Namespace 方式实现的 Sandbox 为例。<br />通过上图，并不难看出，路由、接口等功能应该是由 netlink 提供的，Namespace 获取 netlink 方式如下，需要注意，Namespace 内 netlink 配置，仅在 Namespace 内有效。根据 Namespace 获取 netlink 的关键方法如下
+![docker-network-sandbox.svg](5.jpeg)<br />Sandbox 接口没有列举出全部功能，只是能看出其能力边界的部分功能。后续以 Namespace 方式实现的 Sandbox 为例。<br />通过上图，并不难看出，路由、接口等功能应该是由 netlink 提供的，Namespace 获取 netlink 方式如下，需要注意，Namespace 内 netlink 配置，仅在 Namespace 内有效。根据 Namespace 获取 netlink 的关键方法如下
 ```go
 func GetFromPath(path string) (NsHandle, error) {
 	fd, err := syscall.Open(path, syscall.O_RDONLY, 0)
@@ -134,11 +134,11 @@ func newHandle(newNs, curNs netns.NsHandle, nlFamilies ...int) (*Handle, error) 
 
 <a name="bygD4"></a>
 #### Add Interface
-![docker-network-add-interface.svg](https://cdn.nlark.com/yuque/0/2020/svg/124360/1594444006039-18e235ef-ff03-4aa1-a319-6a4703fc5f0d.svg#align=left&display=inline&height=489&margin=%5Bobject%20Object%5D&name=docker-network-add-interface.svg&originHeight=489&originWidth=663&size=19153&status=done&style=none&width=663)<br />
+![docker-network-add-interface.svg](6.jpeg)<br />
 
 <a name="kECDa"></a>
 ## Bridge Network
-![docker-network-bridge-overview.svg](https://cdn.nlark.com/yuque/0/2020/svg/124360/1594661139759-b2b2a4fb-9551-40de-ba54-eb2a78280aa5.svg#align=left&display=inline&height=639&margin=%5Bobject%20Object%5D&name=docker-network-bridge-overview.svg&originHeight=639&originWidth=722&size=31300&status=done&style=none&width=722)<br />
+![docker-network-bridge-overview.svg](7.jpeg)<br />
 
 <a name="FS5q7"></a>
 ### Create Network
@@ -335,4 +335,4 @@ Bridge 设备创建、配置等，最终均通过 netlink 接口完成。
 <br />
 <a name="bBhWg"></a>
 ### Create Endpoint
-![docker-network-bridge-network.svg](https://cdn.nlark.com/yuque/0/2020/svg/124360/1594881105098-4d26bc49-852d-4d12-bf57-068cd3bcf3e4.svg#align=left&display=inline&height=699&margin=%5Bobject%20Object%5D&name=docker-network-bridge-network.svg&originHeight=699&originWidth=751&size=29274&status=done&style=none&width=751)<br />全局有一个默认 Bridge 设备 docker0，每个 Container 有自己独立的网络协议栈，容器网络和通过 veth 对与 Bridge 设备互通。<br />同一节点上不同 Container 间，通过 ARP 协议，即可进行 3 层通信；Container 出 Node 网络可以通过默认网关设备 docker0，再经过 IPTABLES 重定向至 eth0。
+![docker-network-bridge-network.svg](8.jpeg)<br />全局有一个默认 Bridge 设备 docker0，每个 Container 有自己独立的网络协议栈，容器网络和通过 veth 对与 Bridge 设备互通。<br />同一节点上不同 Container 间，通过 ARP 协议，即可进行 3 层通信；Container 出 Node 网络可以通过默认网关设备 docker0，再经过 IPTABLES 重定向至 eth0。
