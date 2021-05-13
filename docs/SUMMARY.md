@@ -2,53 +2,45 @@
 
 * [欢迎](README.md)
 
-## 活动<a id="event"></a>
+## 活动 <a id="event"></a>
 
 * [Kubernetes 源码研习社](event/code-club.md)
 
+## Kuberenetes 源码设计 <a id="kubernetes"></a>
 
-## Kuberenetes 源码设计<a id="kubernetes"></a>
-* [Introduction](kubernetes/kubernetes-introduction/index.md)
+* [Introduction](kubernetes/index.md)
+* [Docker Networking](kubernetes/index-1.md)
+* [Common Tools Go Routine Tools](kubernetes/index-3.md)
+* [Common Tools Async](kubernetes/index-2.md)
+* [Common Tools Time Budget](kubernetes/index-4.md)
+* [Common Tools Widgets](kubernetes/index-5.md)
+* [Core Scheme](kubernetes/index-6.md)
+* [Core The Basics](kubernetes/index-7.md)
+* [Core Cacheable Object](kubernetes/index-8.md)
+* [Core Codec](kubernetes/index-9.md)
+* [API Server Routes](kubernetes/index-10.md)
+* [API Server API Group](kubernetes/index-11.md)
+* [API Server Storage](kubernetes/index-12.md)
+* [API Server Cacher](kubernetes/index-13.md)
+* [API Server Etcd](kubernetes/index-14.md)
+* [API Server Generic API Server](kubernetes/index-15.md)
+* [API Server CustomResourceDefinitions](kubernetes/index-16.md)
+* [API Server Master Server](kubernetes/index-17.md)
+* [API Server Aggregator Server](kubernetes/index-18.md)
+* [Client Shared Informer](kubernetes/index-19.md)
+* [Client Controller](kubernetes/index-20.md)
+* [Proxy Framework](kubernetes/index-21.md)
+* [Proxy IPTable Proxier](kubernetes/index-22.md)
+* [Proxy IPVS](kubernetes/index-23.md)
+* [Controllers Queue](kubernetes/index-24.md)
+* [Controllers](kubernetes/index-25.md)
+* [Endporint Controller](kubernetes/index-26.md)
+* [Namespace Controller](kubernetes/index-27.md)
+* [Node Controllers](kubernetes/index-28.md)
+* [Scheduler Cache](kubernetes/index-29.md)
+* [Scheduler Priority Queue](kubernetes/index-30.md)
+* [Scheduler Plugins](kubernetes/index-31.md)
+* [Scheduler Schedule](kubernetes/index-32.md)
+* [Tools Client Events](kubernetes/index-33.md)
+* [Tools Network](kubernetes/index-34.md)
 
-* [Docker Networking](kubernetes/kubernetes-docker-networking/index.md)
-
-* [Common Tools Go Routine Tools](kubernetes/kubernetes-common-tools-async/index.md)
-* [Common Tools Async](kubernetes/kubernetes-common-tools-go-routine-tools/index.md)
-* [Common Tools Time Budget](kubernetes/kubernetes-common-tools-time-budget/index.md)
-* [Common Tools Widgets](kubernetes/kubernetes-common-tools-widgets/index.md)
-
-* [Core Scheme](kubernetes/kubernetes-core-scheme/index.md)
-* [Core The Basics](kubernetes/kubernetes-core-basics/index.md)
-* [Core Cacheable Object](kubernetes/kubernetes-core-cacheable-object/index.md)
-* [Core Codec](kubernetes/kubernetes-core-codec/index.md)
-
-* [API Server Routes](kubernetes/kubernetes-apiserver-route/index.md)
-* [API Server API Group](kubernetes/kubernetes-apiserver-apigroup/index.md)
-* [API Server Storage](kubernetes/kubernetes-apiserver-storage/index.md)
-* [API Server Cacher](kubernetes/kubernetes-apiserver-cacher/index.md)
-* [API Server Etcd](kubernetes/kubernetes-apiserver-etcd/index.md)
-* [API Server Generic API Server](kubernetes/kubernetes-apiserver-generic-api-server/index.md)
-* [API Server CustomResourceDefinitions](kubernetes/kubernetes-apiserver-CRD/index.md)
-* [API Server Master Server](kubernetes/kubernetes-apiserver-master-server/index.md)
-* [API Server Aggregator Server](kubernetes/kubernetes-apiserver-aggregator-server/index.md)
-
-* [Client Shared Informer](kubernetes/kubernetes-client-sharedinformer/index.md)
-* [Client Controller](kubernetes/kubernetes-client-sharedinformer/index.md)
-
-* [Proxy Framework](kubernetes/kubernetes-proxy-framework/index.md)
-* [Proxy IPTable Proxier](kubernetes/kubernetes-proxy-iptable-proxier/index.md)
-* [Proxy IPVS](kubernetes/kubernetes-proxy-ipvs/index.md)
-
-* [Controllers Queue](kubernetes/kubernetes-controller-queue/index.md)
-* [Controllers](kubernetes/kubernetes-controller-controllers/index.md)
-* [Endporint Controller](kubernetes/kubernetes-controller-endpoint-controller/index.md)
-* [Namespace Controller](kubernetes/kubernetes-controller-namespace-controller/index.md)
-* [Node Controllers](kubernetes/kubernetes-controller-node-controllers/index.md)
-
-* [Scheduler Cache](kubernetes/kubernetes-scheduler-cache/index.md)
-* [Scheduler Priority Queue](kubernetes/kubernetes-scheduler-priority-queue/index.md)
-* [Scheduler Plugins](kubernetes/kubernetes-scheduler-plugins/index.md)
-* [Scheduler Schedule](kubernetes/kubernetes-scheduler-schedule/index.md)
-
-* [Tools Client Events](kubernetes/kubernetes-tools-client-events/index.md)
-* [Tools Network](kubernetes/kubernetes-tools-network/index.md)
