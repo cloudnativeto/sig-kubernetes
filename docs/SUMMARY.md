@@ -38,9 +38,9 @@
 * [Client Shared Informer](kubernetes/kubernetes-client-sharedinformer/index.md)
 * [Client Controller](kubernetes/kubernetes-client-sharedinformer/index.md)
 
-* [Proxy Framework](kubernetes/kubernetes-client-sharedinformer/index.md)
-* [Proxy IPTable Proxier](kubernetes/kubernetes-client-sharedinformer/index.md)
-* [Proxy IPVS](kubernetes/kubernetes-client-sharedinformer/index.md)
+* [Proxy Framework](kubernetes/kubernetes-proxy-framework/index.md)
+* [Proxy IPTable Proxier](kubernetes/kubernetes-proxy-iptable-proxier/index.md)
+* [Proxy IPVS](kubernetes/kubernetes-proxy-ipvs/index.md)
 
 * [Controllers Queue](kubernetes/kubernetes-controller-queue/index.md)
 * [Controllers](kubernetes/kubernetes-controller-controllers/index.md)
