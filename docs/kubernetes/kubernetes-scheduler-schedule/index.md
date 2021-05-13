@@ -17,7 +17,7 @@ profile: "华北电力大学大四学生。"
 ## Scheduling
 <a name="xJOIF"></a>
 ### NextPod
-![kube-scheduler-schedule-next-pod.svg](1.png)
+![kube-scheduler-schedule-next-pod.svg](kube-scheduler-schedule-next-pod.svg)
 
 Scheduler 中封装了具体调度算法，并与调度算法共享相同的 SchedulingQueue 实例对象。在执行调度时，首先需要通过 NextPod 方法获取待调度的 PodInfo。
 
