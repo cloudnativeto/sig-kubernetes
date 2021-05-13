@@ -123,10 +123,3 @@ spec:
 获取 Pod 对象的方法如下
 
 ![image.png](19.png)
-
-[6] Controllers
-- [Controllers Queue](/blog/kubernetes-controller-queue/)
-- [Controllers](/blog/kubernetes-controller-controllers/)
-- [Endporint Controller](/blog/kubernetes-controller-endpoint-controller/)
-- [Namespace Controller](/blog/kubernetes-controller-namespace-controller/)
-- [Node Controllers](/blog/kubernetes-controller-node-controllers/)

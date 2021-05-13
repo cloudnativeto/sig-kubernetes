@@ -101,15 +101,3 @@ Listener 只有一个 Enqueue 方法，并通过 Notifier 注册到某处。Cont
 ![master-server-dynamic-file-ca-content.svg](91.png)
 
 - [PKI 证书和要求](https://kubernetes.io/zh/docs/setup/best-practices/certificates/)
-
-[3] API Server
-- [API Server Routes](/blog/kubernetes-apiserver-route/)
-- [API Server API Group](/blog/kubernetes-apiserver-apigroup/)
-- [API Server Storage](/blog/kubernetes-apiserver-storage/)
-- [API Server Cacher](/blog/kubernetes-apiserver-cacher/)
-- [API Server Etcd](/blog/kubernetes-apiserver-etcd/)
-- [API Server Generic API Server](/blog/kubernetes-apiserver-generic-api-server/)
-- [API Server CustomResourceDefinitions](/blog/kubernetes-apiserver-crd/)
-- [API Server Master Server](/blog/kubernetes-apiserver-master-server/)
-- [API Server Aggregator Server](/blog/kubernetes-apiserver-aggregator-server/)
-- [API Server API Server Deprecated (暂无)](/blog/kubernetes-apiserver-route/)

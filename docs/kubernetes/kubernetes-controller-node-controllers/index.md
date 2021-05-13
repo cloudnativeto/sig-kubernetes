@@ -117,11 +117,3 @@ Worker 协程中，如果上述处理返回错误，则将 nodeReservedCIDRs 重
 
 ![image.png](40.png)
 
-
-
-[6] Controllers
-- [Controllers Queue](/blog/kubernetes-controller-queue/)
-- [Controllers](/blog/kubernetes-controller-controllers/)
-- [Endporint Controller](/blog/kubernetes-controller-endpoint-controller/)
-- [Namespace Controller](/blog/kubernetes-controller-namespace-controller/)
-- [Node Controllers](/blog/kubernetes-controller-node-controllers/)

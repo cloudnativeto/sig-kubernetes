@@ -40,10 +40,3 @@ NamespaceController 在启动运行时，会根据要求，启动多个协程，
 <a name="KGpG9"></a>
 #### Delete All Content
 ![namespace-controller-delete-all-content.svg](23.png)
-
-[6] Controllers
-- [Controllers Queue](/blog/kubernetes-controller-queue/)
-- [Controllers](/blog/kubernetes-controller-controllers/)
-- [Endporint Controller](/blog/kubernetes-controller-endpoint-controller/)
-- [Namespace Controller](/blog/kubernetes-controller-namespace-controller/)
-- [Node Controllers](/blog/kubernetes-controller-node-controllers/)

@@ -93,15 +93,3 @@ CRD Handler 处理请求时，首先检查缓存是否包含请求对象，如�
 <a name="cUXkp"></a>
 ### CRD Controller
 ![api-extension-server-crd-controller.svg](75.png)
-
-[3] API Server
-- [API Server Routes](/blog/kubernetes-apiserver-route/)
-- [API Server API Group](/blog/kubernetes-apiserver-apigroup/)
-- [API Server Storage](/blog/kubernetes-apiserver-storage/)
-- [API Server Cacher](/blog/kubernetes-apiserver-cacher/)
-- [API Server Etcd](/blog/kubernetes-apiserver-etcd/)
-- [API Server Generic API Server](/blog/kubernetes-apiserver-generic-api-server/)
-- [API Server CustomResourceDefinitions](/blog/kubernetes-apiserver-crd/)
-- [API Server Master Server](/blog/kubernetes-apiserver-master-server/)
-- [API Server Aggregator Server](/blog/kubernetes-apiserver-aggregator-server/)
-- [API Server API Server Deprecated (暂无)](/blog/kubernetes-apiserver-route/)

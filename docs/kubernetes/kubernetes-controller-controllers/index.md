@@ -49,9 +49,3 @@ Controller Manager 负责启动 Controllers。通过注册不同类型 Controlle
 
 ![image.png](8.png)
 
-[6] Controllers
-- [Controllers Queue](/blog/kubernetes-controller-queue/)
-- [Controllers](/blog/kubernetes-controller-controllers/)
-- [Endporint Controller](/blog/kubernetes-controller-endpoint-controller/)
-- [Namespace Controller](/blog/kubernetes-controller-namespace-controller/)
-- [Node Controllers](/blog/kubernetes-controller-node-controllers/)

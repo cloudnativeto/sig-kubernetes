@@ -38,15 +38,3 @@ profile: "华北电力大学大四学生。"
 ![aggregator-server-service-condition.svg](94.png)
 
 AvailableConditionController 的运行协程从 queue 中取出内容，并检查该服务状态后，将服务当前上报至 API Server。
-
-[3] API Server
-- [API Server Routes](/blog/kubernetes-apiserver-route/)
-- [API Server API Group](/blog/kubernetes-apiserver-apigroup/)
-- [API Server Storage](/blog/kubernetes-apiserver-storage/)
-- [API Server Cacher](/blog/kubernetes-apiserver-cacher/)
-- [API Server Etcd](/blog/kubernetes-apiserver-etcd/)
-- [API Server Generic API Server](/blog/kubernetes-apiserver-generic-api-server/)
-- [API Server CustomResourceDefinitions](/blog/kubernetes-apiserver-crd/)
-- [API Server Master Server](/blog/kubernetes-apiserver-master-server/)
-- [API Server Aggregator Server](/blog/kubernetes-apiserver-aggregator-server/)
-- [API Server API Server Deprecated (暂无)](/blog/kubernetes-apiserver-route/)

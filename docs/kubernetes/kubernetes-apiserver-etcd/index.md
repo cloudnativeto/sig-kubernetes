@@ -130,15 +130,3 @@ func (b *backend) run() {
 ![wal.svg](15.png)
 
 致谢一下响哥（李响）在我阅读 bboltDB 的源码的时候给予我的鼓励，使我对 ETCD 的源码产生兴趣（可惜到现在还没有见过一面）。本篇实际是在阅读 API Server 的时候完成的，本意也是为了更好的理解 API Server，API Server 部分图较多，也经历过多次重画，最近整理完毕会逐步放出，有意阅读交流的朋友请持续关注，或者催更（笑）。另外我时常会组织一起进行源码阅读并画图的活动（通常是我和我对象，本篇的 Server 部分就是她画的），如果大家有兴趣的话也可以加入进来对一些优秀设计的开源项目进行源码阅读和画图分享，表示欢迎。
-
-[3] API Server
-- [API Server Routes](/blog/kubernetes-apiserver-route/)
-- [API Server API Group](/blog/kubernetes-apiserver-apigroup/)
-- [API Server Storage](/blog/kubernetes-apiserver-storage/)
-- [API Server Cacher](/blog/kubernetes-apiserver-cacher/)
-- [API Server Etcd](/blog/kubernetes-apiserver-etcd/)
-- [API Server Generic API Server](/blog/kubernetes-apiserver-generic-api-server/)
-- [API Server CustomResourceDefinitions](/blog/kubernetes-apiserver-crd/)
-- [API Server Master Server](/blog/kubernetes-apiserver-master-server/)
-- [API Server Aggregator Server](/blog/kubernetes-apiserver-aggregator-server/)
-- [API Server API Server Deprecated (暂无)](/blog/kubernetes-apiserver-route/)

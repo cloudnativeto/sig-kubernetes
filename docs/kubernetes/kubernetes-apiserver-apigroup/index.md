@@ -58,14 +58,3 @@ VersionedResourcesStorageMap 保存 Version -> Resource -> rest.Storage 的映�
 
 ![image.png](11.png)
 
-[3] API Server
-- [API Server Routes](/blog/kubernetes-apiserver-route/)
-- [API Server API Group](/blog/kubernetes-apiserver-apigroup/)
-- [API Server Storage](/blog/kubernetes-apiserver-storage/)
-- [API Server Cacher](/blog/kubernetes-apiserver-cacher/)
-- [API Server Etcd](/blog/kubernetes-apiserver-etcd/)
-- [API Server Generic API Server](/blog/kubernetes-apiserver-generic-api-server/)
-- [API Server CustomResourceDefinitions](/blog/kubernetes-apiserver-crd/)
-- [API Server Master Server](/blog/kubernetes-apiserver-master-server/)
-- [API Server Aggregator Server](/blog/kubernetes-apiserver-aggregator-server/)
-- [API Server API Server Deprecated (暂无)](/blog/kubernetes-apiserver-route/)
