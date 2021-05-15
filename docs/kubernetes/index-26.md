@@ -21,7 +21,7 @@ description: '本文研究了 Endpoint Controller 部分的源码，配备源码
 
 # Endporint Controller
 
-大家好，我是杨鼎睿，这一次给大家带来的是 Endpoint Controller 部分的源码阅读。
+大家好，这一次给大家带来的是 Endpoint Controller 部分的源码阅读。
 
 ## ResourceEventHandler for Service
 

@@ -21,7 +21,7 @@ description: '本文研究了 Controllers 部分的源码，配备源码进行�
 
 # Controllers
 
-大家好，我是杨鼎睿，这一次给大家带来的是 Controllers 的源码阅读。
+大家好，这一次给大家带来的是 Controllers 的源码阅读。
 
 ## Starting Controller
 

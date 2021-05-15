@@ -21,8 +21,6 @@ description: '本文研究了 Namespace Controller 部分的源码，配备源�
 
 # Namespace Controller
 
-大家好，我是杨鼎睿，这一次给大家带来的是 Namespace Controller 部分的源码阅读。 
-
 ## Procedure
 
 ![namespace-controller-main-procedure.svg](../.gitbook/assets/20%20%282%29.png)
@@ -42,6 +40,8 @@ NamespaceController 在启动运行时，会根据要求，启动多个协程，
 ![namespace-controller-init-op-cache.svg](../.gitbook/assets/21%20%282%29.png)
 
 ### Delete
+
+* [Source](https://sourcegraph.com/github.com/kubernetes/kubernetes/-/blob/pkg/controller/namespace/deletion/namespaced_resources_deleter.go#L95:38)
 
 ![namespace-controller-name-resource-deleter-delete.svg](../.gitbook/assets/22%20%282%29.png)
 

@@ -21,8 +21,6 @@ description: '本文研究了 Aggregator Server 部分的源码，配备源码�
 
 # API Server Aggregator Server
 
-大家好，我是杨鼎睿，这一次给大家带来的是 API Server 的源码阅读。包括之前的 etcd 源码阅读，整个 API Server 共 109 张源码及源码图，文章最后有 API Server 系列目录。欢迎大家的阅读。
-
 本文研究了 Aggregator Server 部分的源码，配备源码进行进一步理解，可以加深理解,增强相关设计能力。 
 
 ## Service Registration

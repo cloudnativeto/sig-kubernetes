@@ -5,7 +5,7 @@ keywords:
   - Kubernetes
   - Controller
 author: '[杨鼎睿](https://yuque.com/abser)'
-date: 2021-05-10T05:04:05.000Z
+date: '2021-05-10T05:04:05.000Z'
 title: Kubernetes Controller Node Controllers 架构设计源码阅读
 tags:
   - Kubernetes
@@ -21,7 +21,7 @@ description: '本文研究了 Node Controllers 部分的源码，配备源码进
 
 # Node Controllers
 
-大家好，我是杨鼎睿，这一次给大家带来的是 Node Controllers 部分的源码阅读。
+大家好，这一次给大家带来的是 Node Controllers 部分的源码阅读。
 
 ## IPAM Controller
 
