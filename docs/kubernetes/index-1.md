@@ -4,9 +4,9 @@
 
 ![image.png](../.gitbook/assets/1%20%2817%29.jpeg)
 
-* Sandbox: 协议栈，可包含多个 Endpoint，可通过 Namespace、Jail 等实现
-* Endpoint: 将 Sandbox 与 Network 连接
-* Network: 可直接通信的 Endpoint 的集合，可使用 Bridge、VLAN 等实现
+* Sandbox: The protocol stack can contain multiple endpoints, which can be implemented by Namespace, Jail, etc.
+* Endpoint: Connect Sandbox with Network
+* Network: A collection of Endpoints that can communicate directly, which can be implemented using Bridge, VLAN, etc.
 
 ## Docker Architecture
 
@@ -18,7 +18,9 @@
 
 ### Initialize Network Controllers
 
-Docker Daemon 管理可用的 NetworkController。在启动 Daemon 时，会创建当前操作系统下全部可用的 NetworkController，以 daemon\_unix.go 为例，创建了 none、host、bridge 三种模式的网络控制器。
+Docker Daemon Manages the available NetWorkController. When launching Daemon, all available NetWorkController under the current operating system will be created. 
+
+On Unix Operating system: with daemon\_unix.go as an example, create None, Host, Bridge network controller.
 
 ```go
 func (daemon *Daemon) initNetworkController(config *config.Config, activeSandboxes map[string]interface{}) (libnetwork.NetworkController, error) {
