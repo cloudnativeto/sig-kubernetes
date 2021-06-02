@@ -2,7 +2,7 @@
 description: 云原生社区 Kubernetes SIG
 ---
 
-# 欢迎
+# Welcome
 
 欢迎来到云原生社区 Kubernetes SIG（特别兴趣小组）！
 

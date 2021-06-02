@@ -1,12 +1,12 @@
 # Table of contents
 
-* [欢迎](README.md)
+* [Welcome](README.md)
 
-## 活动 <a id="event"></a>
+## Activity <a id="event"></a>
 
 * [Kubernetes 源码研习社](event/code-club.md)
 
-## Kuberenetes 源码设计 <a id="kubernetes"></a>
+## Kuberenetes Design&Architecture Pictures <a id="kubernetes"></a>
 
 * [Introduction](kubernetes/index.md)
 * [Docker Networking](kubernetes/index-1.md)
