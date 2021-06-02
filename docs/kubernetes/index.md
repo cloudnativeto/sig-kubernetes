@@ -2,13 +2,13 @@
 
 ## 简介
 
-大家好，这一次给大家带来的是 Kubernetes 的源码阅读。
+Hello everyone, this time I bring you Kubernetes source code reading.
 
-源码设计图需要配合源码使用，除展示关键设计外，还会有问题性的留白。阅读图的时候发现存在问题的，带着问题去看源码，看别人如何设计解决的，会提高设计能力。
+The source code design drawing needs to be used in conjunction with the source code. In addition to showing the key design, there will be problematic blanks. If you find that there are problems when you read the diagram, you can look at the source code with the problem and see how others design and solve it, which will improve your design ability.
 
-如果发现图片模糊的情况，是图片压缩所致，右键另存为下载原图或者联系我（abser9216）发 svg 原图。
+If you find that the picture is blurred, it is caused by the picture compression, right click and save it as the original download image or contact me \(WeChat: abser9216\) to send the original SVG image.
 
-图作者：[Abserari](https://yuque.com/abser)，[Oiar](https://yuque.com/oiar)
+Author of the picture: [Abserari](https://yuque.com/abser)，[Oiar](https://yuque.com/oiar)
 
 ## Architecture
 
