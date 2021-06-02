@@ -8,7 +8,7 @@ The source code design drawing needs to be used in conjunction with the source c
 
 If you find that the picture is blurred, it is caused by the picture compression, right click and save it as the original download image or contact me \(WeChat: abser9216\) to send the original SVG image.
 
-Author of the picture: [Abserari](https://yuque.com/abser)，[Oiar](https://yuque.com/oiar)
+Author of the picture: [Abserari](https://github.com/abserari)，[Oiar](https://github.com/oiar)
 
 ## Architecture
 
