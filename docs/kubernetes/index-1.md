@@ -104,9 +104,7 @@ The Container uses SandboxID and SandboxKey to find Sandbox. At the same time, S
 
 ![docker-network-sandbox.svg](../.gitbook/assets/5%20%285%29.jpeg)
 
-As indicated by docker-network-sandbox.svg, not all the functions are listed, but only the functions which divide the border of Sandbox. The Namespace Sandbox will be an example of analytic.  
-Sandbox 接口没有列举出全部功能，只是能看出其能力边界的部分功能。后续以 Namespace 方式实现的 Sandbox 为例。
-
+As indicated by docker-network-sandbox.svg, not all the functions are listed, but only the functions which divide the border of Sandbox. The Namespace implementation will be an example of analytic.  
 netlink provides the functions like route, interface. The Namespace could get netlink as below code. Attention:  netlink configure only work in Namespace.
 
 ```go
