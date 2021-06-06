@@ -8,7 +8,7 @@
 
 ### Group
 
-Group enhance the ability of sync.Group in the Go standard library. It's used to execute the method to control the termination condition through Context or channel, and execute the method in a  stand-alone Go Routine. 
+Group enhances the ability to sync.Group in the Go standard library. It's used to execute the method to control the termination condition through Context or channel and execute the method in a  stand-alone Go Routine. 
 
 ![image.png](../.gitbook/assets/2%20%284%29.jpeg)
 
@@ -25,7 +25,7 @@ From the comments in the code, we need to solve two key problems, how the slidin
 #### Sliding
 
 From the code, it's not difficult to see that the sliding is whether the time interval contains execution time. Looking at the 170 lines of code, it's not difficult to guess that Backoff\(\) returns a Timer type, then the Timer start time is the key.  
-One detail needs to be noted in this code, the select starting at line 167 doesn't guarantee order, in other words, if the timer has been triggered and the stopCh has been closed, it isn't necessary to ensure certain exit. But after entering the lower wheel cycle, due to the 144th line code, it must ensure that the program is normal to exit.
+One detail needs to be noted in this code, the select starting at line 167 doesn't guarantee order, in other words, if the timer has been triggered and the stopCh has been closed, it isn't necessary to ensure exit. But after entering the lower wheel cycle, due to the 144th line code, it must ensure that the program is normal to exit.
 
 ![image.png](../.gitbook/assets/5.jpeg)
 
@@ -35,7 +35,6 @@ The jitterFactor works rely on the BackoffManager, let's look at the creation pr
 
 ![image.png](../.gitbook/assets/6.jpeg)
 
-  
 Let's look at the implementation of its backoff method again. Pay attention to lines 379-383 to ensure that only one timer is working.
 
 ![image.png](../.gitbook/assets/7.jpeg)
