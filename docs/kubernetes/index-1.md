@@ -94,8 +94,9 @@ func (daemon *Daemon) initNetworkController(config *config.Config, activeSandbox
 ![docker-network-network-controller-impl.svg](../.gitbook/assets/4%20%2810%29.jpeg)
 
   
-controller 是 libnetwork 中对 NetworkController 的实现。可以看到，controller 通过驱动表来区分不同类型的网络，使用驱动创建 Network 及 Endpoint，并将 Endpoint 加入 Sandbox 或移除出 Sandbox。  
-Container 通过 SandboxID 以及 SandboxKey 来找到对应的 Sandbox。Sandbox 可以使用 containerID 来确定是否归属于某个 Container。
+The controller is the implementation of NetworkController in libnetwork. In this picture, the controller uses a registry map to distinguish network with different types, then use the Driver to create Network and Endpoint, attach the Endpoint to Sandbox or remove them from Sandbox.
+
+The Container uses SandboxID and SandboxKey to find Sandbox. At the same time, Sandbox use containerID to determine which Container it belongs to.      
 
 ## OS Layer Sandbox
 
@@ -103,9 +104,10 @@ Container 通过 SandboxID 以及 SandboxKey 来找到对应的 Sandbox。Sandbo
 
 ![docker-network-sandbox.svg](../.gitbook/assets/5%20%285%29.jpeg)
 
-  
-Sandbox 接口没有列举出全部功能，只是能看出其能力边界的部分功能。后续以 Namespace 方式实现的 Sandbox 为例。  
-通过上图，并不难看出，路由、接口等功能应该是由 netlink 提供的，Namespace 获取 netlink 方式如下，需要注意，Namespace 内 netlink 配置，仅在 Namespace 内有效。根据 Namespace 获取 netlink 的关键方法如下
+As indicated by docker-network-sandbox.svg, not all the functions are listed, but only the functions which divide the border of Sandbox. The Namespace Sandbox will be an example of analytic.  
+Sandbox 接口没有列举出全部功能，只是能看出其能力边界的部分功能。后续以 Namespace 方式实现的 Sandbox 为例。
+
+netlink provides the functions like route, interface. The Namespace could get netlink as below code. Attention:  netlink configure only work in Namespace.
 
 ```go
 func GetFromPath(path string) (NsHandle, error) {
@@ -117,10 +119,13 @@ func GetFromPath(path string) (NsHandle, error) {
 }
 ```
 
-使用返回的 NsHandle 就可以创建具体的 SocketHandle 了，方法如下
+GetFromPath would return NsHandle structure, then NsHandle could be used in below methods to create specific SocketHandle.
+
+```
+func NewHandleAt(ns netns.NsHandle, nlFamilies ...int) (*Handle, error) {
+```
 
 ```go
-func NewHandleAt(ns netns.NsHandle, nlFamilies ...int) (*Handle, error) {
     return newHandle(ns, netns.None(), nlFamilies...)
 }
 
@@ -157,7 +162,7 @@ func newHandle(newNs, curNs netns.NsHandle, nlFamilies ...int) (*Handle, error) 
 
 ### Create Network
 
-根据配置文件中 BridgeName 查找系统中已存在的 Link 实例，如果 BridgeName 为空，使用默认网桥 docker0。
+According to the BridgeName value of the config file\(networkConfiguration\), attempt to find an existing bridge named with the specified name. If not, use the default Bridge -- docker0.
 
 ```go
 func newInterface(nlh *netlink.Handle, config *networkConfiguration) (*bridgeInterface, error) {
@@ -180,7 +185,7 @@ func newInterface(nlh *netlink.Handle, config *networkConfiguration) (*bridgeInt
 }
 ```
 
-创建 bridgeNetwork 实例，并存入 networks
+Create and set network handler in driver
 
 ```go
 // Create and set network handler in driver
@@ -198,7 +203,7 @@ d.networks[config.ID] = network
 d.Unlock()
 ```
 
-如果获取的 bridgeInterface 中不存在有效网桥设备，则将创建设备、sysctl 方法加入设置队列；如果使用 docker0，仅将 sysctl 方法加入设置队列
+If bridgeInterface exists the valid bridge device, the device and sysctl methods would be added to the queue; if already exists, just add sysctl methods.
 
 ```go
 bridgeAlreadyExists := bridgeIface.exists()
@@ -213,7 +218,7 @@ if config.DefaultBridge {
 }
 ```
 
-根据配置文件参数，将对应的设置方法加入设置队列
+Add a corresponding setting method to the setting queue according to the configuration file parameters.
 
 ```go
 for _, step := range []struct {
@@ -261,7 +266,7 @@ for _, step := range []struct {
 }
 ```
 
-将设备启动设置方法加入设置队列，并返回执行结果
+Add the device start setting method to the setup queue and return to the execution result.
 
 ```go
 bridgeSetup.queueStep(setupDeviceUp)
@@ -270,7 +275,7 @@ return bridgeSetup.apply()
 
 #### Setup Device
 
-创建 netlink.Bridge 结构体，LinkAttrs 中使用配置中的 BridgeName，然后，使用 netlink 方法创建网桥设备，如果需要设置 MAC 则随机生成 MAC 地址。
+Create a NetLink.bridge structure, using BridGename in the configuration to create LinkAttrs, then create a bridge device using the NetLink method. If need to set MAC, randomly generates the MAC address.
 
 ```go
 func setupDevice(config *networkConfiguration, i *bridgeInterface) error {
@@ -313,13 +318,13 @@ func setupDevice(config *networkConfiguration, i *bridgeInterface) error {
 }
 ```
 
-Bridge 设备创建、配置等，最终均通过 netlink 接口完成。
+So netlink could create and configure Bridge devices. 
 
 #### Networking Configuration
 
 * System Control
-  * /proc/sys/net/ipv6/conf/BridgeName/accept\_ra -&gt; 0：不接受路由建议
-  * /proc/sys/net/ipv4/conf/_**BridgeName**_/route\_localnet -&gt; 1：将外部流量重定向至 loopback，需要配合 iptables 使用
+  * /proc/sys/net/ipv6/conf/BridgeName/accept\_ra -&gt; 0：Routing suggestions are not accepted
+  * /proc/sys/net/ipv4/conf/_**BridgeName**_/route\_localnet -&gt; 1：Redirect external traffic to loopback, need to be used with iptables
 
 #### IPTABLES
 
@@ -360,6 +365,6 @@ Bridge 设备创建、配置等，最终均通过 netlink 接口完成。
 ![docker-network-bridge-network.svg](../.gitbook/assets/8%20%284%29.jpeg)
 
   
-全局有一个默认 Bridge 设备 docker0，每个 Container 有自己独立的网络协议栈，容器网络和通过 veth 对与 Bridge 设备互通。  
-同一节点上不同 Container 间，通过 ARP 协议，即可进行 3 层通信；Container 出 Node 网络可以通过默认网关设备 docker0，再经过 IPTABLES 重定向至 eth0。
+There is a default Bridge device docker0 globally, and each Container has its own independent network protocol stack. Container network and Bridge device communication via Veth pairs  
+Different Container on the same node, 3-layer communication can be performed through the ARP protocol; when the Container traffic out of the Node network, should be redirected by the default gateway device Docker0, and then redirect to Eth0.
 
