@@ -2,13 +2,17 @@
 
 ## Overview
 
-从命名来看，CacheableObject 用于保存 Object 实例，在 Kubernetes 版本 1.18 中，只要一个结构 cachingObject 实现了该接口，关系大致如下图  
+Know the information from the name of `CacheableObject`. It could store the Object instance. In the 1.18 version of Kubernetes,  `cachingObject` is the only implementation of this interface - `CacheableObject`. Its relation as this picture.   
 
 
 ![cacheable-object-overview.svg](../.gitbook/assets/1%20%2814%29.jpeg)
 
   
-再结合 CacheableObject 定义，会发现：向 CacheableObject 存入 Object 时，指定了 Identifier，那是否意味着可以存入多个 Object 呢？而 GetObject 方法，确只返回了一个 Object 实例，虽然不能排除 slice、map 等容器类结构实现 Object 接口的可能性，但也是一个需要深入了解并解决的问题。让我们继续，并从尝试解决这两个问题开始，看看能有什么收获。  
+Combined with `CacheableObject` definitions, it will be found that when the `CacheableObject` is stored in Object, Identifier is specified, whether does it mean to save\(cache\) multiple Object? 
+
+The `GetObject()` method is indeed returned to an Object instance, although the container class structure of Slice, Map cannot be eliminated to implement the possibility of Object interface, it is also a problem that needs to be deeply understood and resolved. 
+
+Let us continue and start by trying to solve these two questions and see what can have any gains.  
 
 
 ![image.png](../.gitbook/assets/2%20%289%29.jpeg)
@@ -20,7 +24,7 @@
 
 ### Overview
 
-每个 cachingObject 实际存储一个 Object，即 metaRuntimeInterface 实例。根据不同的 Identifier，将这个对象编码为不同格式，并缓存在 map 中。  
+Each `cachingObject` actually stores an Object, which is the `metaRuntimeInterface` instance. According to different Identifiers, this object is encoded into different formats and is cached in the map.  
  
 
 ![cacheable-object-caching-object.svg](../.gitbook/assets/3%20%288%29.jpeg)
@@ -33,14 +37,13 @@
 
 ![image.png](../.gitbook/assets/4%20%288%29.jpeg)
 
-  
-metaRuntimeInterface 同时实现了 runtime.Object 与 metav1.Object 接口  
+`metaRuntimeInterface` simultaneously implemented `runtime.Object` interface and `metav1.Object` interface.  
 
 
 ![image.png](../.gitbook/assets/5%20%283%29.jpeg)
 
   
-metav1.Object 接口定义如下，用于描述 Kubernetes 核心对象  
+`metav1.Object` interface as this defined is using to describe Kuberentes core Object.  
 
 
 ![image.png](../.gitbook/assets/6%20%282%29.jpeg)
@@ -50,14 +53,11 @@ metav1.Object 接口定义如下，用于描述 Kubernetes 核心对象
 
 #### Creation
 
-从 new 方法，可以看到，一个 cachingObject 存入的确实是一个实例，并且存入实例时，存储的并不是原始对象，而是一份儿深度拷贝。  
-
+From the new method, we can see that a `cachingObject` stores an instance, and when it stores an instance, it does not store the original object, but a deep copy
 
 ![image.png](../.gitbook/assets/7%20%282%29.jpeg)
 
-  
-GetObject 方法获取存入的 metaRuntimeInterface 实例的一份儿深度拷贝。  
- 
+ GetObject method Gets a deep copy of the metaRuntimeInterface instance.
 
 ![image.png](../.gitbook/assets/8%20%283%29.jpeg)
 
@@ -65,7 +65,7 @@ GetObject 方法获取存入的 metaRuntimeInterface 实例的一份儿深度拷
 
 #### Implementation for runtime.Object
 
-cachingObject 本身也满足 runtime.Object 接口，实现如下。这里需要注意，在 DeepCopyObject 方法中，创建了新的 serializationCache，且没有复制旧内容。  
+CachingObject itself also implement the `runtime.Object` interface, implemented as follows. It is important to note that in the `DeepCopyObject()` method, a new SerializationCache is created, and the old content is **not copied**.  
 
 
 ![image.png](../.gitbook/assets/9%20%281%29.jpeg)
@@ -77,9 +77,7 @@ cachingObject 本身也满足 runtime.Object 接口，实现如下。这里需�
 
 ![image.png](../.gitbook/assets/10%20%281%29.jpeg)
 
-  
-重点是更换 atomic.Value 操作过程，如下所示  
-
+The focus is to replace the `atomic.Value` , the operation as shown below.
 
 ![image.png](../.gitbook/assets/11%20%281%29.jpeg)
 
