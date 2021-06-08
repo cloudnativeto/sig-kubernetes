@@ -6,9 +6,7 @@
 
 ![api-machinery-object-relation.svg](../.gitbook/assets/1%20%2813%29.jpeg)
 
-  
-Object 实例如下所示，基本都在 pkg/apis 目录下，自己查找即可。  
-
+The Object instances are as follows. They are basically in the pkg/apis directory, you can find it yourself.
 
 ![image.png](../.gitbook/assets/2%20%288%29.jpeg)
 
@@ -16,15 +14,11 @@ Object 实例如下所示，基本都在 pkg/apis 目录下，自己查找即可
 
 ![image.png](../.gitbook/assets/3%20%287%29.jpeg)
 
-  
-Unstructured 与 Object 配合使用的场景如下  
-
+The scene of Unstructured and Object cooperation is as follows.
 
 ![image.png](../.gitbook/assets/4%20%287%29.jpeg)
 
-  
-实例图如下  
-
+The example diagram is as follows.
 
 ![api-machinery-unstructured.svg](../.gitbook/assets/5%20%281%29.jpeg)
 
@@ -39,7 +33,7 @@ Unstructured 与 Object 配合使用的场景如下
 
 ### Scheme
 
-看一下 [Scheme](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L47) 的定义，前四项都是在维护 reflect.Type 与 schema.GroupVersionKind 的关系。defaulterFuncs 用于构建默认对象。
+Look at the definition of [Scheme](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L47), the first four are maintained the relationship between reflect.Type and Schema.GroupVersionKind. The defaulterFuncs is used to build a default object.
 
 ```go
 type Scheme struct {
@@ -84,8 +78,7 @@ type Scheme struct {
 }
 ```
 
-  
-[FieldLabelConversionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L89:86) 用于将 label、value 转换为内部 label、value。
+[FieldLabelConversionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L89:86) is used to convert label and value to internal label and value.
 
 ```go
 type FieldLabelConversionFunc func(label, value string) (internalLabel, internalValue string, err error)
@@ -93,35 +86,21 @@ type FieldLabelConversionFunc func(label, value string) (internalLabel, internal
 
 ### AddKnownTypes
 
-[AddKnownTypes](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L172) 只需要注意一个问题，即从传入的 GroupVersion 通过 reflect.Type 的 Name 方法返回值作为 Kind 生成 GroupVersionKind，请看简化后的示例 [Reflect Name Sample](https://gist.github.com/fengyfei/46fe53e3a4ef3eb05cf4402cefabae07)，示例代码可在 [Go Playground](https://play.golang.org/) 下执行。  
-   
-
+[AddKnownTypes](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L172) only needs to pay attention to one problem, that is, the GroupVersionKind is generated from the incoming GroupVersion through the Name method of reflect.Type as the Kind. Please see the simplified sample [Reflect Name Sample](https://gist.github.com/fengyfei/46fe53e3a4ef3eb05cf4402cefabae07). The sample code can be executed under [Go Playground](https://play.golang.org/).
 
 ![scheme-add-known-types.svg](../.gitbook/assets/7%20%281%29.jpeg)
 
-  
-
-
 ### AddUnversionedTypes
 
-[AddUnversionedTypes](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L154) 原理如下。可以将 Unversioned Type 理解为一个 Object 挂载在一个 Group 上，且 Version 永不更新。  
-   
-
+The principle of [AddUnversionedTypes](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L154) is as follows. Unversioned Type can be understood as an Object mounted on a Group, and the Version will never be updated.
 
 ![scheme-add-unversioned.svg](../.gitbook/assets/8%20%281%29.jpeg)
 
-  
-
-
 ### nameFunc
 
-[nameFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L116) 原理如下，只要注意返回类型优先为 Internal Type 就可以了。  
-   
-
+The principle of [nameFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/runtime/scheme.go#L116) is as follows, just pay attention to the return type priority to Internal Type.
 
 ![scheme-name-func.svg](../.gitbook/assets/9.jpeg)
-
-
 
 ### Others
 
@@ -137,28 +116,25 @@ type FieldLabelConversionFunc func(label, value string) (internalLabel, internal
 
 ![conversion-landscape.svg](../.gitbook/assets/10.jpeg)
 
-  
-   
-[typePair](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L24) 用来表示源类型与目标类型的组合；[typeNamePair](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L29) 存储类型及类型名称；[DefaultNameFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L41) 用做默认的类型到 Name 的转换方法。[ConversionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L47:57) 定义了对象转换方法。  
-
+The [typePair](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L24) is used to represent the combination of source type and target type, [typeNamePair](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L29) stores the type and type name. [DefaultNameFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L41) is used as the conversion method from the default type to Name. [ConversionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L47:57) defines the object conversion method.
 
 #### Core Function Definitions
 
-DefaultNameFunc 实现如下所示
+The DefaultNameFunc implementation is as follows.
 
 ```go
 var DefaultNameFunc = func(t reflect.Type) string { return t.Name() }
 ```
 
   
-ConversionFunc 声明如下所示
+The ConversionFunc declaration is as follows.
 
 ```go
 type ConversionFunc func(a, b interface{}, scope Scope) error
 ```
 
   
-FieldMappingFunc 将 key 转换为源结构及目标结构中的 Field
+FieldMappingFunc converts the key to Field in the source structure and the target structure.
 
 ```go
 type FieldMappingFunc func(key string, sourceTag, destTag reflect.StructTag) (source string, dest string)
@@ -174,17 +150,16 @@ type FieldMappingFunc func(key string, sourceTag, destTag reflect.StructTag) (so
 
   
    
-将下列方法做简要说明：
+Briefly explain the following methods:
 
-* [RegisterConvesionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L375) 直接调用 ConversionFuncs.Add 方法
-* [RegisterUntypedConversionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L389) 则调用 ConversionFuncs.AddUntyped 方
-* [RegisterIgnoredConversion](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L402) 将不做转换的类型记录在映射中
-* [RegisterInputDefaults](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L419) 注册输入类型的 Field 转换方法
+* [RegisterConvesionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L375) calls ConversionFuncs.Add method directly.
+* [RegisterUntypedConversionFunc](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L389) calls ConversionFuncs.AddUntyped method.
+* [RegisterIgnoredConversion](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L402) will not do the type of conversion record in the mapping.
+* [RegisterInputDefaults](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L419) register input type Field conversion method.
 
 #### doConversion
 
-Converter 在执行对象转换方法时，如 [Convert](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L469)、[DefaultConvert](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L481) 允许传入一个 Meta 对象，并执行 [doConversion](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L487) 方法，在这个方法中构建 scope 对象。  
-
+When Converter executes object conversion methods, such as [Convert](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L469) and [DefaultConvert](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L481), it is allowed to pass in a Meta object and execute the [doConversion](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L487) method to construct the scope object in this method.
 
 ![converter-conversion.svg](../.gitbook/assets/13.jpeg)
 
@@ -197,8 +172,9 @@ Converter 在执行对象转换方法时，如 [Convert](https://sourcegraph.com
 
 #### defaultConvert
 
-[defaultConvert](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L582) 处理默认的类型变换，传入的 sv, dv 已经经由 [EnforcePtr](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/helper.go#L27:6) 确保为可寻址。这部分代码是对 Go 中 reflect 包近乎完美的应用。  
-首先，处理基本类型的转换，即可通过 [AssignableTo](https://golang.org/pkg/reflect/#pkg-index) 或 [ConvertibleTo](https://golang.org/pkg/reflect/#pkg-index) 转换的类型。
+The [defaultConvert](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L582) handles the default type conversion, the incoming sv, dv have been ensured to be addressable through [EnforcePtr](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/helper.go#L27:6). This part of the code is a nearly perfect application of the reflect package in Go. 
+
+First, deal with the conversion of basic types, which can be converted by [AssignableTo](https://golang.org/pkg/reflect/#pkg-index) or [ConvertibleTo](https://golang.org/pkg/reflect/#pkg-index).
 
 ```go
 switch st.Kind() {
@@ -217,13 +193,11 @@ switch st.Kind() {
 }
 ```
 
-  
-然后根据 dv.Kind\(\) 分别进行处理。  
-
+Then process them separately according to dv.Kind\(\).
 
 **dv.Kind\(\) -&gt; reflect.Struct**
 
-直接返回 [convertKV](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L788) 方法的结果，但是，需要注意，首先将 sv、dv 分别转化为 Key/Value 的形式。[toKVValue](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L691) 方法请自行研究。
+Return the result of the [convertKV](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L788) method directly. However, you need to pay attention to first convert sv and dv into the form of Key/Value respectively. Please study the [toKVValue](https://sourcegraph.com/github.com/kubernetes/apimachinery@release-1.15/-/blob/pkg/conversion/converter.go#L691) method by yourself.
 
 ```go
 return c.convertKV(toKVValue(sv), toKVValue(dv), scope)
