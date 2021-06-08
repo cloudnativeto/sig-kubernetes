@@ -21,7 +21,7 @@ description: '本文研究了 API Group 部分的源码，配备源码进行进�
 
 # API Server API Group
 
-本文研究了 API Group 部分的源码，配备源码进行进一步理解，可以加深理解,增强相关设计能力。
+This paper studies the source code of the  **API Group** section. You should read the source code at the same time. It can enhance your design capacity.
 
 ## Resource Management
 

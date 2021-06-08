@@ -21,17 +21,19 @@ description: '本文研究了 Route 部分的源码，配备源码进行进一�
 
 # API Server Routes
 
-本文研究了 Route 部分的源码，配备源码进行进一步理解，可以加深理解,增强相关设计能力。
+This paper studies the source code of the **Route** section. You should read the source code at the same time. It can enhance your design capacity.
 
 ## APIServerHandler
 
 ### Overview
 
-下图为 APIServerHandler 核心组件间关联。主要分为 Restful 和 NonRestful 两部分，director 优先使用 Restful 部分，如果处理成功，则退出，不执行 NonRestful 部分；如果 Restful 部分没有目标功能，则执行 NonRestful 部分。FullHandlerChain 用于 HTTP 处理入口点，链接了中间件功能，并将请求引导至 Director 进行处理。
+The figure below shows the `APIServerHandler`core assembly. It is mainly divided into Restful and NonRestful two parts.   
+- Restful is prioritized, and if the processing is successful, exit. does not execute the NonRestful section;   
+- if the RESTful section does not have a target function, the NonRestful section is executed. `FullHandlerChain` is used for HTTP processing entry points, linking the middleware features, and boots the request to the `Director` for processing.
 
 ![routes-api-server-handler-serve.svg](../.gitbook/assets/1%20%282%29.png)
 
-下面为 APIServer 默认的 HandlerChain 构建过程
+The following is the `APIServer`default `HandlerChain` build process.
 
 ![image.png](../.gitbook/assets/2%20%282%29.png)
 
