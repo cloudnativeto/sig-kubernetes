@@ -21,7 +21,7 @@ description: '本文研究了 Cacher 部分的源码，配备源码进行进一�
 
 # API Server Cacher
 
-本文研究了 Cacher 部分的源码，配备源码进行进一步理解，可以加深理解,增强相关设计能力。 
+This paper studies the source code of the Storage section. You should read the source code at the same time. It can enhance your design capacity. 
 
 ## Overview
 

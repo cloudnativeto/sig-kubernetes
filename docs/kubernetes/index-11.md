@@ -27,7 +27,7 @@ This paper studies the source code of the  **API Group** section. You should rea
 
 ### Storage
 
-VersionedResourcesStorageMap 保存 Version -&gt; Resource -&gt; rest.Storage 的映射，第一级映射为 Version，二级为 Resource，Storage 用于解决资源对象的创建、更改、删除等操作。
+VersionedResourcesStorageMap saves the mapping of version-&gt;resources-&gt;rest.Storage, the first-level mapping is the version, the second-level is the resource, and the storage is used to solve the creation, modification, and deletion of resource objects.
 
 ![api-group-vr-storage-map.svg](../.gitbook/assets/3.png)
 
@@ -57,17 +57,17 @@ VersionedResourcesStorageMap 保存 Version -&gt; Resource -&gt; rest.Storage �
 
 #### registerResourceHandlers
 
-将 rest.Storage 接口，转换为各种操作的接口，代码如下所示。从这里可以看出，rest.Storage 接口是关键，后续再深入探讨。
+Convert the rest.Storage interface to various operation interfaces, the code is shown below. It can be seen from this that the rest.Storage interface is the key, and we will discuss it in depth later.
 
 ![image.png](../.gitbook/assets/9.png)
 
-以 creater 为例，最终，将 creater 或 namedCreater 注册在 Post 方法上
+Take creater as an example. Finally, register creater or namedCreater on the Post method.
 
 ![image.png](../.gitbook/assets/10.png)
 
 ### Discovery
 
-在注册代码中，我们可以看到，注册 API 时，返回了可用的 Resources、restful.WebService。随后，马上将该 WebService 可获取的 Resources 注册在该 WebService 的根请求上，动作为 GET。
+In the registration code, we can see that when registering the API, available Resources and restful.WebService is returned. Afterward, immediately register the Resources available to the WebService on the root request of the WebService, and the action is GET.
 
 ![image.png](../.gitbook/assets/11.png)
 
