@@ -21,7 +21,7 @@ description: '本文研究了 Master Server 部分的源码，配备源码进行
 
 # API Server Master Server
 
-本文研究了 Master Server 部分的源码，配备源码进行进一步理解，可以加深理解,增强相关设计能力。
+This article has studied the source code of the Master Server part, equipped with the source code for further understanding, which can deepen the understanding and enhance related design capabilities.
 
 ## Server Handler
 
@@ -39,41 +39,41 @@ description: '本文研究了 Master Server 部分的源码，配备源码进行
 
 ### Install Legacy Resource
 
-首先，判断是否开启了 v1 版本的资源配置，如果开启，才会安装对应的资源处理 API。注意两个核心组件 StorageFactory 与 RESTOptionsGetter，此前都有较为详细的说明。
+First, determine whether the resource configuration of the v1 version is enabled. If enabled, the corresponding resource processing API will be installed. Note that the two core components, StorageFactory and RESTOptionsGetter, have been explained in more detail before.
 
-创建 LegacyRESTStorageProvider 对象，保存 StorageFactory 及其他必要的信息，然后传入方法 InstallLegacyAPI，伴随传入的还有 RESTOptionsGetter。
+Create a LegacyRESTStorageProvider object, save the StorageFactory and other necessary information, and then pass in the method InstallLegacyAPI, along with RESTOptionsGetter.
 
 ![image.png](../.gitbook/assets/79.png)
 
-InstallLegacyAPI 使用传入的参数，创建 APIGroupInfo，并安装。
+InstallLegacyAPI uses the passed parameters to create APIGroupInfo and install it.
 
 ![image.png](../.gitbook/assets/80%20%281%29.png)
 
 #### NewLegacyRESTStorage
 
-* 创建 APIGroupInfo
+* Create APIGroupInfo.
 
 ![image.png](../.gitbook/assets/81%20%281%29.png)
 
-* 创建各种类型的 RESTStorage，下图没有列举全部
+* Create various types of RESTStorage, not all of them are listed in the figure below.
 
 ![image.png](../.gitbook/assets/82%20%281%29.png)
 
-* 构建资源到 Storage 的映射
+* Build resources for Storage mapping.
 
 ![image.png](../.gitbook/assets/83%20%281%29.png)
 
-* 将资源到 Storage 的映射，关联在版本 v1 上
+* An associate resource to Storage mapping on version v1.
 
 ![image.png](../.gitbook/assets/84%20%281%29.png)
 
 #### REST
 
-每个资源类型，都有自己的 REST 封装。一般说来，REST 只需要简单的封装一个 Store 即可。创建时，将注册与该资源类型匹配的 **NewFunc**、**NewListFunc** 以及**行为策略**。
+Each resource type has its own REST package. Generally speaking, REST only needs to simply encapsulate a Store. When creating, it will register **NewFunc**, **NewListFunc**, and **behavior strategies** that match the resource type.
 
 ![image.png](../.gitbook/assets/85%20%281%29.png)
 
-要注意，REST 里未必只包含一个 Store，比如 PosStorage
+Note that REST is not necessarily only one Store, such as Posstorage.
 
 ![image.png](../.gitbook/assets/86%20%281%29.png)
 
@@ -81,17 +81,17 @@ InstallLegacyAPI 使用传入的参数，创建 APIGroupInfo，并安装。
 
 ![master-server-rest-storage-provider.svg](../.gitbook/assets/87%20%281%29.png)
 
-RESTStorageProvider 配合 Resource Config 与 REST Options 创建 APIGroupInfo，用于向 API Server 注册资源处理方法。
+RESTStorageProvider cooperates with Resource Config and REST Options to create APIGroupInfo, which is used to register resource processing methods with API Server.
 
-RESTOptionsGetter 根据 APIResourceConfigSource 中的版本、资源检查方法，向 Storage Map 注册 Store，并最终将 Storage Map 挂载到 APIGroupInfo 上。以 Auto Scaling 为例，代码如下所示
+RESTOptionsGetter registers the Store with the Storage Map according to the version and resource check method in APIResourceConfigSource, and finally mounts the Storage Map to APIGroupInfo. Take Auto Scaling as an example, the code is as follows.
 
 ![image.png](../.gitbook/assets/88%20%281%29.png)
 
-创建 v1 版本的 Storage 的代码如下，其他部分大同小异。
+The code to create the v1 version of Storage is as follows, and the other parts are similar.
 
 ![image.png](../.gitbook/assets/89%20%281%29.png)
 
-不难看出，RESTStorageProvider 是承接配置到 API Group 的核心组件。这样的设计，可以非常明确的划分各个结构、接口的边界，并设定了合理的流程。
+It is not difficult to see that RESTStorageProvider is the core component that undertakes configuration to API Group. Such a design can clearly divide the boundaries of each structure and interface, and set a reasonable process.
 
 ## Cluster Authentication
 
@@ -99,13 +99,13 @@ RESTOptionsGetter 根据 APIResourceConfigSource 中的版本、资源检查方�
 
 ![master-server-controller-runner.svg](../.gitbook/assets/90%20%281%29.png)
 
-Listener 只有一个 Enqueue 方法，并通过 Notifier 注册到某处。ControllerRunner 控制某一任务的执行，执行过程中如果需要通知外部，则通过已注册的 Listener 列表，广播（或单播）至目标方任务队列。队列拥有方，可能是一个正在等待队列输出的任务。
+The Listener has only one Enqueue method and is registered somewhere through Notifier. ControllerRunner controls the execution of a task. If it is necessary to notify the outside during the execution process, it will broadcast \(or unicast\) to the target task queue through the registered Listener list. The queue owner may be a task waiting for the queue to output.
 
-通过这样的设计，利用队列特性，将两个关联的任务隔离开来，划分好各自边界。Listener 接口的 Enqueue 方法没有参数，因此，Listener 的实现更关注于事件发生，而不是事件内容的具体细节，这种思路值得借鉴。
+Through this design, use the queue feature to isolate the two related tasks and divide their boundaries. The Enqueue method of the Listener interface has no parameters. Therefore, the implementation of the Listener focuses more on the occurrence of the event rather than the specific details of the event content. This idea is worth learning.
 
 ### Dynamic CA
 
 ![master-server-dynamic-file-ca-content.svg](../.gitbook/assets/91%20%281%29.png)
 
-* [PKI 证书和要求](https://kubernetes.io/zh/docs/setup/best-practices/certificates/)
+* PKI certificate and requirements
 
