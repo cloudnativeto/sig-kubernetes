@@ -21,7 +21,7 @@ description: '本文研究了 CRD 部分的源码，配备源码进行进一步�
 
 # API Server CustomResourceDefinitions
 
-本文研究了 CRD 部分的源码，配备源码进行进一步理解，可以加深理解,增强相关设计能力。 
+This article has studied the source code of the CRD part, equipped with the source code for further understanding, which can deepen the understanding and enhance related design capabilities. 
 
 ## ResourceConfig
 
@@ -29,7 +29,7 @@ description: '本文研究了 CRD 部分的源码，配备源码进行进一步�
 
 ![image.png](../.gitbook/assets/60.png)
 
-开启的资源配置及禁用的版本
+Enabled resource configuration and disabled version.
 
 ![image.png](../.gitbook/assets/61.png)
 
@@ -37,7 +37,7 @@ description: '本文研究了 CRD 部分的源码，配备源码进行进一步�
 
 ![image.png](../.gitbook/assets/62.png)
 
-开启选型如下
+Enabled the selection as follows.
 
 ![image.png](../.gitbook/assets/63.png)
 
@@ -45,7 +45,7 @@ description: '本文研究了 CRD 部分的源码，配备源码进行进一步�
 
 ![image.png](../.gitbook/assets/64.png)
 
-三者如下图所示
+The three are shown below.
 
 ![api-extension-server-runtime-support.svg](../.gitbook/assets/65.png)
 
@@ -55,7 +55,7 @@ description: '本文研究了 CRD 部分的源码，配备源码进行进一步�
 
 ![api-extension-server-rest-storage.svg](../.gitbook/assets/66.png)
 
-Store 展开后如下图所示
+The Store is expanded as shown below.
 
 ![api-extension-server-rest-store.svg](../.gitbook/assets/67.png)
 
@@ -63,17 +63,17 @@ Store 展开后如下图所示
 
 ### Landscape
 
-SharedInformerFactory 用于创建 SharedIndexInformer，后者会周期性的使用 Clientset 连接版本为 v1beta1 或 v1 的 API Extension Services，获取到状态变更后，通知各自的 ResourceEventHandler。在此，还有一些问题需要深入挖掘：
+SharedInformerFactory is used to create SharedIndexInformer, which will periodically use Clientset to connect to the API Extension Services of v1beta1 or v1 and notify the respective ResourceEventHandler after obtaining the status change. Here, there are still some issues that need to dig deeper:
 
-* SharedInformerFactory 如何区分不同类型的资源状态变更
-* ResourceEventHandler 是否能同时关注不同类型资源状态的变更
-* 资源状态变更是如何获取到的
+* How SharedInformerFactory distinguishes different types of resource state changes
+* Can ResourceEventHandler pay attention to changes in the state of different types of resources at the same time
+* How are resource status changes obtained
 
 ![api-extension-server-shared-informer-relations.svg](../.gitbook/assets/68.png)
 
 ### Clientset
 
-Clientset 功能相对简单，将可用的 API Extension Services 进行封装，每个 RESTClient 都连接在 "Loopback" 地址上，并向不同的服务发送请求。
+The Clientset function is relatively simple. It encapsulates the available API Extension Services. Each RESTClient is connected to the "Loopback" address and sends requests to different services.
 
 ![api-extension-server-clientset.svg](../.gitbook/assets/69.png)
 
@@ -91,11 +91,11 @@ Clientset 功能相对简单，将可用的 API Extension Services 进行封装�
 
 ### EstablishingController
 
-EstablishingController 启动后，会启动一个定时执行任务，这个任务每秒检查队列里是否有新的 **Key** 值，如果有，则更新 Server 端对应资源状态为 **Established**。
+After the EstablishingController is started, it will start a scheduled execution task. This task checks every second whether there is a new **Key** value in the queue. If there is, update the corresponding resource status on the Server side to **Established**.
 
 ![api-extension-server-establishing-controller.svg](../.gitbook/assets/72.png)
 
-sync 代码如下
+The sync code is as follows.
 
 ![image.png](../.gitbook/assets/73.png)
 
@@ -103,9 +103,9 @@ sync 代码如下
 
 ![api-extension-server-crd-controller.svg](../.gitbook/assets/74.png)
 
-CRD Handler 向 SharedIndexInformer 注册事件处理，Watch 的对象类型 Update 时，则有可能是状态变为 Established 状态，需要向 EstablingController 发送。
+The CRD Handler registers event processing with SharedIndexInformer. When the Watch object type is Update, it may be that the state changes to the Established state and needs to be sent to the EstablingController.
 
-CRD Handler 处理请求时，首先检查缓存是否包含请求对象，如果有，返回缓存对象；如果没有，则向 Server 请求，并更改缓存状态。 
+When the CRD Handler processes the request, it first checks whether the cache contains the requested object, if so, returns the cached object; if not, it requests the Server and changes the cache status. 
 
 ### CRD Controller
 
